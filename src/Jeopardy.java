@@ -4,6 +4,9 @@ import java.applet.AudioClip;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.Border;
 
 /* This recipe is to be used with the Jeopardy Handout: http://bit.ly/1bvnvd4 */
 
@@ -52,21 +56,24 @@ public class Jeopardy implements ActionListener {
 	}
 
 	JButton[][] buttons = new JButton[6][5];
+	String[] headers = { "Clinical Trials", "Elements of a Good Expiramental Design", "Problem Solving Methods ", "Analyzing Data", "Vocab ", "Potpurri" };
 
 	private void start() {
 		JFrame frame = new JFrame();
-		quizPanel = new JPanel();
+		quizPanel = new JPanel(null);
 		frame.setLayout(new BorderLayout());
-		JPanel header = createHeader("Stuff");
-		header.setLayout(null);
-
 		for (int i = 0; i < 6; i++) {
+			JPanel header = createHeader(headers[i], 0);
 			for (int j = 0; j < 5; j++) {
-				buttons[i][j] = createButton("$100");
+				buttons[i][j] = createButton("$" + ((j + 1) * 100));
 				header.add(buttons[i][j]);
-				buttons[i][j].setLocation(i*100, j*100);
+				buttons[i][j].setLocation(0, 50 + j * 100);
 				buttons[i][j].setSize(100, 100);
+				buttons[i][j].addActionListener(this);
 			}
+			header.setBounds(i * 100, 0, 100, 600);
+
+			quizPanel.add(header);
 		}
 
 		// 1. Make the frame show up
@@ -80,25 +87,20 @@ public class Jeopardy implements ActionListener {
 		// quizPanel.add(header);
 		// 5. Add the quizPanel to the frame
 		frame.add(quizPanel);
-		frame.add(header);
 
 		// frame.pack();
-		quizPanel.setLayout(null);
 		frame.add(makeScorePanel(), BorderLayout.NORTH);
-		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height,
-				Toolkit.getDefaultToolkit().getScreenSize().width);
+		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height, Toolkit.getDefaultToolkit().getScreenSize().width);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(1000, 1000);
+		frame.setSize(1200, 600);
 	}
 
 	/*
 	 * 13. Use the method provided to play the Jeopardy theme music
 	 * 
-	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000
-	 * questions
+	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 	 *
-	 * [optional] Use the showImage or playSound methods when the user answers a
-	 * question
+	 * [optional] Use the showImage or playSound methods when the user answers a question
 	 */
 
 	private JButton createButton(String dollarAmount) {
@@ -113,31 +115,9 @@ public class Jeopardy implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		// Remove this temporary message:
-		// JOptionPane.showMessageDialog(null, "pressed " + ((JButton)
-		// arg0.getSource()).getText() + " button");
-
-		// Use the method that plays the jeopardy theme music.
 		playJeopardyTheme();
 		JButton buttonPressed = (JButton) arg0.getSource();
-		// If the buttonPressed was the firstButton
-		if (buttonPressed.getText().equals(firstButton.getText())) {
-
-			// Call the askQuestion() method
-			askQuestion("Yes or No", "No", 100);
-			// Fill in the askQuestion() method. When you play the game, the
-			// score
-			// should change.
-
-		}
-		// Or if the buttonPressed was the secondButton
-		if (buttonPressed.getText().equals(secondButton.getText())) {
-			askQuestion("No or Yes", "Yes", 200);
-		}
-		// Call the askQuestion() method with a harder question
-
-		// Clear the button text (set the button text to nothing)
-
+		buttonPressed.setEnabled(false);
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
@@ -171,8 +151,7 @@ public class Jeopardy implements ActionListener {
 
 	public void playJeopardyTheme() {
 		try {
-			AudioInputStream audioInputStream = AudioSystem
-					.getAudioInputStream(new File("/Users/Administrator/Google Drive/league-sounds/jeopardy.wav"));
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
@@ -198,11 +177,14 @@ public class Jeopardy implements ActionListener {
 		scoreBox.setText("" + score);
 	}
 
-	private JPanel createHeader(String topicName) {
+	private JPanel createHeader(String topicName, int x) {
 		JPanel panelj = new JPanel();
-		panelj.setLayout(new BoxLayout(panelj, BoxLayout.PAGE_AXIS));
-		JLabel l1 = new JLabel(topicName);
-		l1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		panelj.setLayout(null);
+		JLabel l1 = new JLabel();
+		l1.setSize(100, 50);
+		l1.setText("<html><div style='width:50px'>" + topicName + "</div></html>");
+		l1.setFont(new Font("Arial", Font.BOLD, 10));
+		l1.setLocation(x, 0);
 		panelj.add(l1);
 		return panelj;
 	}
