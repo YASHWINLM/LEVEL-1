@@ -20,7 +20,8 @@ public class XMLParser {
 		String startingTag = xmlContent.substring(start, index);
 
 		XMLNode rootNode = new XMLNode(startingTag);
-		ArrayList<XMLNode> childTags = getTags(xmlContent.substring(index + 1, xmlContent.length() - startingTag.length() - 3));
+		ArrayList<XMLNode> childTags = getTags(
+				xmlContent.substring(index + 1, xmlContent.length() - startingTag.length() - 3));
 		for (XMLNode node : childTags) {
 			print(node, 0);
 		}
@@ -38,25 +39,29 @@ public class XMLParser {
 	private ArrayList<XMLNode> getTags(String content) {
 		ArrayList<XMLNode> childNodes = new ArrayList<>();
 
-		int lastEndIndex = 0;
-		
-		String openingTag = content.substring(1, content.indexOf('>'));
-		String closingTag = content.substring(content.indexOf("</" + openingTag + ">") + 2, content.length() - 1);
-		
-		String innerContentOfTag = content.substring(content.indexOf('>') + 1, content.indexOf("</" + openingTag + ">"));
-		if (innerContentOfTag.contains("<") || innerContentOfTag.contains(">")) {
-			ArrayList<XMLNode> childChildNodes = getTags(innerContentOfTag);
-			XMLNode treeNode = new XMLNode(openingTag);
-			treeNode.setLeaf(false);
-			treeNode.setChildren(childChildNodes);
+		int lastEndIndex = 1;
 
-			childNodes.add(treeNode);
-		} else {
-			XMLNode leafNode = new XMLNode(openingTag);
-			leafNode.setLeaf(true);
-			leafNode.setValue(innerContentOfTag);
+		while (lastEndIndex > -1) {
+			System.out.println(content + " " + lastEndIndex + " " + content.indexOf('>'));
+			String openingTag = content.substring(lastEndIndex, content.indexOf('>'));
 
-			childNodes.add(leafNode);
+			String innerContentOfTag = content.substring(content.indexOf('>') + 1,
+					content.indexOf("</" + openingTag + ">"));
+			if (innerContentOfTag.contains("<") || innerContentOfTag.contains(">")) {
+				ArrayList<XMLNode> childChildNodes = getTags(innerContentOfTag);
+				XMLNode treeNode = new XMLNode(openingTag);
+				treeNode.setLeaf(false);
+				treeNode.setChildren(childChildNodes);
+
+				childNodes.add(treeNode);
+			} else {
+				XMLNode leafNode = new XMLNode(openingTag);
+				leafNode.setLeaf(true);
+				leafNode.setValue(innerContentOfTag);
+
+				childNodes.add(leafNode);
+			}
+			lastEndIndex = content.indexOf("</" + openingTag + ">", lastEndIndex) + openingTag.length() + 3;
 		}
 		return childNodes;
 	}
