@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -11,7 +10,7 @@ public class XMLParser {
 		this.xmlFile = xmlFile;
 	}
 
-	public void parse() throws IOException {
+	public XMLNode[] parse() throws IOException {
 		String xmlContent = new String(Files.readAllBytes(xmlFile.toPath())).replaceAll("\n", "").replaceAll("\t", "");
 
 		int start = 1;
@@ -19,55 +18,33 @@ public class XMLParser {
 
 		String startingTag = xmlContent.substring(start, index);
 
-		XMLNode rootNode = new XMLNode(startingTag);
 		ArrayList<XMLNode> childTags = getTags(
 				xmlContent.substring(index + 1, xmlContent.length() - startingTag.length() - 3));
-		for (XMLNode node : childTags) {
-			print(node, 0);
-		}
-	}
-
-	private void print(XMLNode node, int depth) {
-		System.out.println(new String(new char[depth]).replaceAll("\0", "\t") + "Node: " + node.getTagName());
-		if (!node.isLeaf()) {
-			for (XMLNode childNode : node) {
-				print(childNode, depth + 1);
-			}
-		}
+		return childTags.toArray(new XMLNode[childTags.size()]);
 	}
 
 	private ArrayList<XMLNode> getTags(String content) {
-		ArrayList<XMLNode> childNodes = new ArrayList<>();
+		String openingTagName = content.substring(1, content.indexOf('>'));
+		String innerContentOfTag = content.substring(content.indexOf('>') + 1,
+				content.indexOf("</" + openingTagName + ">"));
 
-		int lastEndIndex = 1;
+		ArrayList<XMLNode> nodes = new ArrayList<>();
 
-		while (lastEndIndex > -1) {
-			System.out.println(content + " " + lastEndIndex + " " + content.indexOf('>'));
-			String openingTag = content.substring(lastEndIndex, content.indexOf('>'));
-
-			String innerContentOfTag = content.substring(content.indexOf('>') + 1,
-					content.indexOf("</" + openingTag + ">"));
-			if (innerContentOfTag.contains("<") || innerContentOfTag.contains(">")) {
-				ArrayList<XMLNode> childChildNodes = getTags(innerContentOfTag);
-				XMLNode treeNode = new XMLNode(openingTag);
-				treeNode.setLeaf(false);
-				treeNode.setChildren(childChildNodes);
-
-				childNodes.add(treeNode);
-			} else {
-				XMLNode leafNode = new XMLNode(openingTag);
-				leafNode.setLeaf(true);
-				leafNode.setValue(innerContentOfTag);
-
-				childNodes.add(leafNode);
-			}
-			lastEndIndex = content.indexOf("</" + openingTag + ">", lastEndIndex) + openingTag.length() + 3;
+		XMLNode node = new XMLNode(openingTagName);
+		node.setValue(innerContentOfTag);
+		if (innerContentOfTag.contains("<") || innerContentOfTag.contains(">")) {
+			node.setLeaf(false);
+			node.setChildren(getTags(innerContentOfTag));
+		} else {
+			node.setLeaf(true);
 		}
-		return childNodes;
-	}
+		nodes.add(node);
 
-	public static void main(String[] args) throws IOException {
-		XMLParser parser = new XMLParser(new File(System.getProperty("user.dir") + "/Jeopardy.xml"));
-		parser.parse();
+		int end = innerContentOfTag.length() + (2 * (openingTagName.length() + 2)) + 1;
+		if (end != content.length()) {
+			nodes.addAll(getTags(content.substring(end)));
+		}
+
+		return nodes;
 	}
 }

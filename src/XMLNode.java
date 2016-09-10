@@ -1,7 +1,6 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class XMLNode implements Iterable<XMLNode> {
+public class XMLNode {
 	private String tagName;
 	private String value;
 	private boolean isLeaf;
@@ -9,6 +8,25 @@ public class XMLNode implements Iterable<XMLNode> {
 
 	public XMLNode(String tagName) {
 		this.tagName = tagName;
+	}
+
+	public XMLNode getChildByTagName(String name) {
+		for (XMLNode child : children) {
+			if (child.getTagName().equals(name)) {
+				return child;
+			}
+		}
+		return null;
+	}
+
+	public XMLNode[] getChildrenByTagName(String name) {
+		ArrayList<XMLNode> nodes = new ArrayList<>();
+		for (XMLNode child : children) {
+			if (child.getTagName().equals(name)) {
+				nodes.add(child);
+			}
+		}
+		return nodes.toArray(new XMLNode[nodes.size()]);
 	}
 
 	public String getTagName() {
@@ -48,7 +66,7 @@ public class XMLNode implements Iterable<XMLNode> {
 	}
 
 	@Override
-	public Iterator<XMLNode> iterator() {
-		return children.iterator();
+	public String toString() {
+		return this.tagName;
 	}
 }

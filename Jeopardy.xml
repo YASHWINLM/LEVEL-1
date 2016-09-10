@@ -1,15 +1,170 @@
 <game>
 	<header>
-		<name>Clinical Trials</name>
+		<name>Sample Header #1</name>
 		<jeopardy>
-			<question>What is the purpose of a clinical trial?</question>
-			<answer>To make sure the medicine is safe and effective.</answer>
+			<question>Sample Question #1?</question>
+			<answer>Sample Answer #1.</answer>
 			<money>$100</money>
 		</jeopardy>
 		<jeopardy>
-			<question>What is the difference between a placebo and treatment group?</question>
-			<answer>The placebo group thinks that they are getting the medicine but get an inactive substance where as the treatment group actually get the medicine.</answer>
+			<question>Sample Question #2?</question>
+			<answer>Sample Answer #2.</answer>
 			<money>$200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #3?</question>
+			<answer>Sample Answer #3.</answer>
+			<money>3200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #4?</question>
+			<answer>Sample Answer #4.</answer>
+			<money>$400</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+			<money>$500</money>
+		</jeopardy>
+	</header>
+	<header>
+		<name>Sample Header #2</name>
+		<jeopardy>
+			<question>Sample Question #1?</question>
+			<answer>Sample Answer #1.</answer>
+			<money>$100</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #2?</question>
+			<answer>Sample Answer #2.</answer>
+			<money>$200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #3?</question>
+			<answer>Sample Answer #3.</answer>
+			<money>3200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #4?</question>
+			<answer>Sample Answer #4.</answer>
+			<money>$400</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+			<money>$500</money>
+		</jeopardy>
+	</header>
+	<header>
+		<name>Sample Header #3</name>
+		<jeopardy>
+			<question>Sample Question #1?</question>
+			<answer>Sample Answer #1.</answer>
+			<money>$100</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #2?</question>
+			<answer>Sample Answer #2.</answer>
+			<money>$200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #3?</question>
+			<answer>Sample Answer #3.</answer>
+			<money>3200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #4?</question>
+			<answer>Sample Answer #4.</answer>
+			<money>$400</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+			<money>$500</money>
+		</jeopardy>
+	</header>
+	<header>
+		<name>Sample Header #4</name>
+		<jeopardy>
+			<question>Sample Question #1?</question>
+			<answer>Sample Answer #1.</answer>
+			<money>$100</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #2?</question>
+			<answer>Sample Answer #2.</answer>
+			<money>$200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #3?</question>
+			<answer>Sample Answer #3.</answer>
+			<money>3200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #4?</question>
+			<answer>Sample Answer #4.</answer>
+			<money>$400</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+			<money>$500</money>
+		</jeopardy>
+	</header>
+	<header>
+		<name>Sample Header #5</name>
+		<jeopardy>
+			<question>Sample Question #1?</question>
+			<answer>Sample Answer #1.</answer>
+			<money>$100</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #2?</question>
+			<answer>Sample Answer #2.</answer>
+			<money>$200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #3?</question>
+			<answer>Sample Answer #3.</answer>
+			<money>3200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #4?</question>
+			<answer>Sample Answer #4.</answer>
+			<money>$400</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+			<money>$500</money>
+		</jeopardy>
+	</header>
+	<header>
+		<name>Sample Header #6</name>
+		<jeopardy>
+			<question>Sample Question #1?</question>
+			<answer>Sample Answer #1.</answer>
+			<money>$100</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #2?</question>
+			<answer>Sample Answer #2.</answer>
+			<money>$200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #3?</question>
+			<answer>Sample Answer #3.</answer>
+			<money>3200</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #4?</question>
+			<answer>Sample Answer #4.</answer>
+			<money>$400</money>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+			<money>$500</money>
 		</jeopardy>
 	</header>
 </game>

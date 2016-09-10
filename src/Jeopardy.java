@@ -5,18 +5,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
@@ -27,7 +25,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.border.Border;
 
 /* This recipe is to be used with the Jeopardy Handout: http://bit.ly/1bvnvd4 */
 
@@ -52,20 +49,34 @@ public class Jeopardy implements ActionListener {
 	int buttonCount = 0;
 
 	public static void main(String[] args) {
-		new Jeopardy().start();
+		try {
+			new Jeopardy().start();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	JButton[][] buttons = new JButton[6][5];
-	String[] headers = { "Clinical Trials", "Elements of a Good Expiramental Design", "Problem Solving Methods ", "Analyzing Data", "Vocab ", "Potpurri" };
+	String[] headers = new String[6];
+	XMLNode[] headerNodes;
 
-	private void start() {
+	private void start() throws IOException {
+		XMLParser parser = new XMLParser(new File(System.getProperty("user.dir") + "/Jeopardy.xml"));
+		headerNodes = parser.parse();
+
+		int index = 0;
+		for (XMLNode category : headerNodes) {
+			headers[index++] = category.getChildByTagName("name").getValue();
+		}
+
 		JFrame frame = new JFrame();
 		quizPanel = new JPanel(null);
 		frame.setLayout(new BorderLayout());
 		for (int i = 0; i < 6; i++) {
 			JPanel header = createHeader(headers[i], 0);
 			for (int j = 0; j < 5; j++) {
-				buttons[i][j] = createButton("$" + ((j + 1) * 100));
+				buttons[i][j] = createButton(
+						headerNodes[i].getChildrenByTagName("jeopardy")[j].getChildByTagName("money").getValue());
 				header.add(buttons[i][j]);
 				buttons[i][j].setLocation(0, 50 + j * 100);
 				buttons[i][j].setSize(100, 100);
@@ -90,7 +101,8 @@ public class Jeopardy implements ActionListener {
 
 		// frame.pack();
 		frame.add(makeScorePanel(), BorderLayout.NORTH);
-		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height, Toolkit.getDefaultToolkit().getScreenSize().width);
+		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height,
+				Toolkit.getDefaultToolkit().getScreenSize().width);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1200, 600);
 	}
@@ -98,9 +110,11 @@ public class Jeopardy implements ActionListener {
 	/*
 	 * 13. Use the method provided to play the Jeopardy theme music
 	 * 
-	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
+	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000
+	 * questions
 	 *
-	 * [optional] Use the showImage or playSound methods when the user answers a question
+	 * [optional] Use the showImage or playSound methods when the user answers a
+	 * question
 	 */
 
 	private JButton createButton(String dollarAmount) {
@@ -151,7 +165,8 @@ public class Jeopardy implements ActionListener {
 
 	public void playJeopardyTheme() {
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
+			AudioInputStream audioInputStream = AudioSystem
+					.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
