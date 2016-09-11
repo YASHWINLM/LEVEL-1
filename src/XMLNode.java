@@ -1,10 +1,17 @@
+
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class XMLNode {
 	private String tagName;
 	private String value;
 	private boolean isLeaf;
+	private boolean isBodyless;
 	private ArrayList<XMLNode> children = new ArrayList<>();
+	private HashMap<String, String> attributes = new HashMap<>();
 
 	public XMLNode(String tagName) {
 		this.tagName = tagName;
@@ -37,6 +44,14 @@ public class XMLNode {
 		this.tagName = tagName;
 	}
 
+	public boolean isAttributeless() {
+		return attributes.size() == 0;
+	}
+
+	public boolean hasAttribute(String attr) {
+		return attributes.containsKey(attr);
+	}
+
 	public boolean isLeaf() {
 		return isLeaf;
 	}
@@ -53,16 +68,40 @@ public class XMLNode {
 		this.value = value;
 	}
 
-	public ArrayList<XMLNode> getChildren() {
-		return children;
+	public XMLNode[] getChildren() {
+		return children.toArray(new XMLNode[children.size()]);
 	}
 
-	public void setChildren(ArrayList<XMLNode> children) {
-		this.children = children;
+	public void setChildren(XMLNode[] children) {
+		this.children = new ArrayList<>(Arrays.asList(children));
 	}
 
 	public void addChild(XMLNode node) {
 		this.children.add(node);
+	}
+
+	public String[] getAttributesNames() {
+		return attributes.keySet().toArray(new String[attributes.keySet().size()]);
+	}
+
+	public String getAttribute(String name) {
+		return attributes.get(name);
+	}
+
+	public void addAttribute(String name, String value) {
+		attributes.put(name, value);
+	}
+
+	public void setAttributes(Map<String, String> attributes) {
+		this.attributes = new HashMap<>(attributes);
+	}
+
+	public boolean isBodyless() {
+		return isBodyless;
+	}
+
+	public void setBodyless(boolean isBodyless) {
+		this.isBodyless = isBodyless;
 	}
 
 	@Override

@@ -1,6 +1,5 @@
 <game>
-	<header>
-		<name>Sample Header #1</name>
+	<header name="This is a new XML header">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
@@ -27,8 +26,7 @@
 			<money>$500</money>
 		</jeopardy>
 	</header>
-	<header>
-		<name>Sample Header #2</name>
+	<header name="Sample Header #2">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
@@ -55,8 +53,7 @@
 			<money>$500</money>
 		</jeopardy>
 	</header>
-	<header>
-		<name>Sample Header #3</name>
+	<header name="Sample Header #3">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
@@ -83,8 +80,7 @@
 			<money>$500</money>
 		</jeopardy>
 	</header>
-	<header>
-		<name>Sample Header #4</name>
+	<header name="Sample Header #4">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
@@ -111,8 +107,7 @@
 			<money>$500</money>
 		</jeopardy>
 	</header>
-	<header>
-		<name>Sample Header #5</name>
+	<header name="Sample Header #5">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
@@ -139,7 +134,7 @@
 			<money>$500</money>
 		</jeopardy>
 	</header>
-	<header>
+	<header name="Sample Header #6">
 		<name>Sample Header #6</name>
 		<jeopardy>
 			<question>Sample Question #1?</question>

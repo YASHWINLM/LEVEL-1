@@ -66,7 +66,7 @@ public class Jeopardy implements ActionListener {
 
 		int index = 0;
 		for (XMLNode category : headerNodes) {
-			headers[index++] = category.getChildByTagName("name").getValue();
+			headers[index++] = category.getAttribute("name");
 		}
 
 		JFrame frame = new JFrame();
