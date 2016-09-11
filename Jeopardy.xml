@@ -13,7 +13,7 @@
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>3200</money>
+			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
@@ -40,7 +40,7 @@
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>3200</money>
+			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
@@ -67,7 +67,7 @@
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>3200</money>
+			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
@@ -94,7 +94,7 @@
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>3200</money>
+			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
@@ -121,7 +121,7 @@
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>3200</money>
+			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
@@ -149,7 +149,7 @@
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>3200</money>
+			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
