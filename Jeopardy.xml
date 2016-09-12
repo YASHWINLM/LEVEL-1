@@ -3,135 +3,110 @@
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
-			<money>$100</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #2?</question>
 			<answer>Sample Answer #2.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
 			<answer>Sample Answer #4.</answer>
-			<money>$400</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #5?</question>
 			<answer>Sample Answer #5.</answer>
-			<money>$500</money>
 		</jeopardy>
 	</header>
 	<header name="Sample Header #2">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
-			<money>$100</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #2?</question>
 			<answer>Sample Answer #2.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
 			<answer>Sample Answer #4.</answer>
-			<money>$400</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #5?</question>
 			<answer>Sample Answer #5.</answer>
-			<money>$500</money>
 		</jeopardy>
 	</header>
 	<header name="Sample Header #3">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
-			<money>$100</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #2?</question>
 			<answer>Sample Answer #2.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
 			<answer>Sample Answer #4.</answer>
-			<money>$400</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #5?</question>
 			<answer>Sample Answer #5.</answer>
-			<money>$500</money>
 		</jeopardy>
 	</header>
 	<header name="Sample Header #4">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
-			<money>$100</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #2?</question>
 			<answer>Sample Answer #2.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
 			<answer>Sample Answer #4.</answer>
-			<money>$400</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #5?</question>
 			<answer>Sample Answer #5.</answer>
-			<money>$500</money>
 		</jeopardy>
 	</header>
 	<header name="Sample Header #5">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
-			<money>$100</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #2?</question>
 			<answer>Sample Answer #2.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
 			<answer>Sample Answer #4.</answer>
-			<money>$400</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #5?</question>
 			<answer>Sample Answer #5.</answer>
-			<money>$500</money>
 		</jeopardy>
 	</header>
 	<header name="Sample Header #6">
@@ -139,27 +114,22 @@
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
-			<money>$100</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #2?</question>
 			<answer>Sample Answer #2.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #3?</question>
 			<answer>Sample Answer #3.</answer>
-			<money>$200</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #4?</question>
 			<answer>Sample Answer #4.</answer>
-			<money>$400</money>
 		</jeopardy>
 		<jeopardy>
 			<question>Sample Question #5?</question>
 			<answer>Sample Answer #5.</answer>
-			<money>$500</money>
 		</jeopardy>
 	</header>
 </game>
