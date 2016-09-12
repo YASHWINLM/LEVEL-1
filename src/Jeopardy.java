@@ -62,7 +62,8 @@ public class Jeopardy implements ActionListener {
 
 	private void start() throws IOException {
 		XMLParser parser = new XMLParser(new File(System.getProperty("user.dir") + "/Jeopardy.xml"));
-		headerNodes = parser.parse();
+		XMLNode rootNode = parser.parse()[0];
+		headerNodes = rootNode.getChildren();
 
 		int index = 0;
 		for (XMLNode category : headerNodes) {
