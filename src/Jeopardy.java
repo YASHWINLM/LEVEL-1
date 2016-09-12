@@ -76,8 +76,7 @@ public class Jeopardy implements ActionListener {
 		for (int i = 0; i < 6; i++) {
 			JPanel header = createHeader(headers[i], 0);
 			for (int j = 0; j < 5; j++) {
-				buttons[i][j] = createButton(
-						headerNodes[i].getChildrenByTagName("jeopardy")[j].getChildByTagName("money").getValue());
+				buttons[i][j] = createButton("$" + ((j + 1) * 100));
 				header.add(buttons[i][j]);
 				buttons[i][j].setLocation(0, 50 + j * 100);
 				buttons[i][j].setSize(100, 100);
