@@ -1,5 +1,71 @@
 <game>
-	<header name="This is a new XML header">
+	<header name="Clinical Trials">
+		<jeopardy>
+			<question>What is the purpose of a clinical trial?</question>
+			<answer>To make sure that the medicicne is safe and effective</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>What is the difference between a placebo and a treatment group</question>
+			<answer>The placebo group thinks that they are getting the medicine but get an inactive substance where as the treatment group actually get the medicine.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>A Placebo is a type of…</question>
+			<answer>Control</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>In a clinical trial, why is a placebo group included?</question>
+			<answer>It is used as a comparison to assure that the medicine is actually working and that is not the patient is not getting better because of the placebo effect.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+		</jeopardy>
+	</header>
+	<header name="Elements of Good Experimental Design">
+		<jeopardy>
+			<question>Which is better, a large or small sample size?</question>
+			<answer>large.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>Why is it important to describe all steps of the procedure clearly?</question>
+			<answer>So that any body else can take your procedures and understand exactly what you did and be able to reproduce it.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>What are the two kinds of data? </question>
+			<answer>Qualitative and Quantitative Data.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>What are the 2 kinds of variables found in an experiment? </question>
+			<answer>Tested Variable and Control Variables.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+		</jeopardy>
+	</header>
+	<header name="Problem Solving Methods">
+		<jeopardy>
+			<question>What is a hypothesis?</question>
+			<answer>A prediction of the answer to the problem in an experiment, it is based on background knowledge and information.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>Is the traditional scientific method used by all scientists? Why or why not?</question>
+			<answer>Answers may vary-All scientist conduct experiments in similar ways and usually have some component of the TSM, but…all problems are different and need different methods to solve them.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>Name 2 essentials of good procedure.</question>
+			<answer>Numbered Steps, Detailed, Clear and easy to follow.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #4?</question>
+			<answer>Sample Answer #4.</answer>
+		</jeopardy>
+		<jeopardy>
+			<question>Sample Question #5?</question>
+			<answer>Sample Answer #5.</answer>
+		</jeopardy>
+	</header>
+	<header name="Analyzing Data">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
@@ -21,7 +87,7 @@
 			<answer>Sample Answer #5.</answer>
 		</jeopardy>
 	</header>
-	<header name="Sample Header #2">
+	<header name="Vocab">
 		<jeopardy>
 			<question>Sample Question #1?</question>
 			<answer>Sample Answer #1.</answer>
@@ -43,73 +109,7 @@
 			<answer>Sample Answer #5.</answer>
 		</jeopardy>
 	</header>
-	<header name="Sample Header #3">
-		<jeopardy>
-			<question>Sample Question #1?</question>
-			<answer>Sample Answer #1.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #2?</question>
-			<answer>Sample Answer #2.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #3?</question>
-			<answer>Sample Answer #3.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #4?</question>
-			<answer>Sample Answer #4.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #5?</question>
-			<answer>Sample Answer #5.</answer>
-		</jeopardy>
-	</header>
-	<header name="Sample Header #4">
-		<jeopardy>
-			<question>Sample Question #1?</question>
-			<answer>Sample Answer #1.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #2?</question>
-			<answer>Sample Answer #2.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #3?</question>
-			<answer>Sample Answer #3.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #4?</question>
-			<answer>Sample Answer #4.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #5?</question>
-			<answer>Sample Answer #5.</answer>
-		</jeopardy>
-	</header>
-	<header name="Sample Header #5">
-		<jeopardy>
-			<question>Sample Question #1?</question>
-			<answer>Sample Answer #1.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #2?</question>
-			<answer>Sample Answer #2.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #3?</question>
-			<answer>Sample Answer #3.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #4?</question>
-			<answer>Sample Answer #4.</answer>
-		</jeopardy>
-		<jeopardy>
-			<question>Sample Question #5?</question>
-			<answer>Sample Answer #5.</answer>
-		</jeopardy>
-	</header>
-	<header name="Sample Header #6">
+	<header name="Potpourri">
 		<name>Sample Header #6</name>
 		<jeopardy>
 			<question>Sample Question #1?</question>
