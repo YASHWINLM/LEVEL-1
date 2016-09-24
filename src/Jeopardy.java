@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.regex.Pattern;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -59,18 +60,17 @@ public class Jeopardy implements ActionListener {
 	JButton[][] buttons = new JButton[6][5];
 	String[] headers = new String[6];
 	XMLNode[] headerNodes;
+	JFrame frame = new JFrame();
 
 	private void start() throws IOException {
 		XMLParser parser = new XMLParser(new File(System.getProperty("user.dir") + "/Jeopardy.xml"));
-		XMLNode rootNode = parser.parse()[0];
-		headerNodes = rootNode.getChildren();
 
 		int index = 0;
-		for (XMLNode category : headerNodes) {
+		for (XMLNode category : headerNodes = parser.parse()) {
+			System.out.println(category.getTagName());
 			headers[index++] = category.getAttribute("name");
 		}
 
-		JFrame frame = new JFrame();
 		quizPanel = new JPanel(null);
 		frame.setLayout(new BorderLayout());
 		for (int i = 0; i < 6; i++) {
@@ -132,6 +132,29 @@ public class Jeopardy implements ActionListener {
 		playJeopardyTheme();
 		JButton buttonPressed = (JButton) arg0.getSource();
 		buttonPressed.setEnabled(false);
+
+		for (int i = 0; i < buttons.length; i++) {
+			for (int j = 0; j < buttons[i].length; j++) {
+				if (buttons[i][j] == buttonPressed) {
+					XMLNode h = headerNodes[i];
+					XMLNode jeopardy = h.getChildren()[j];
+					XMLNode q = jeopardy.getChildren()[0];
+					String answer = JOptionPane.showInputDialog(q.getValue());
+					XMLNode a = jeopardy.getChildren()[1];
+					if (Pattern.compile("(?i)(" + answer + ").+?").matcher(a.getValue()).find()) {
+						score += (j + 1) * 100;
+						JOptionPane.showMessageDialog(null, "YEA");
+					} else {
+						score -= (j + 1) * 100;
+						JOptionPane.showMessageDialog(null, "Frick u " + a.getValue());
+					}
+				}
+			}
+		}
+
+		scoreBox.setText(score + "");
+		frame.invalidate();
+		frame.repaint();
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
