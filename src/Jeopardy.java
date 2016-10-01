@@ -131,7 +131,7 @@ public class Jeopardy implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		playJeopardyTheme();
 		JButton buttonPressed = (JButton) arg0.getSource();
-		buttonPressed.setEnabled(false);
+		//buttonPressed.setEnabled(false);
 
 		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons[i].length; j++) {
@@ -162,7 +162,7 @@ public class Jeopardy implements ActionListener {
 		// JOptionPane.showMessageDialog(null, "this is where the question will
 		// be asked");
 		// Use a pop up to ask the user the question
-		String answer = JOptionPane.showInputDialog(question);
+		String answer = JOptionPane.showMessageDialog(null, question);
 		// If the answer is correct
 		if (answer.equals(correctAnswer)) {
 
