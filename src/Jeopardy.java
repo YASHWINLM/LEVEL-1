@@ -162,7 +162,7 @@ public class Jeopardy implements ActionListener {
 		// JOptionPane.showMessageDialog(null, "this is where the question will
 		// be asked");
 		// Use a pop up to ask the user the question
-		String answer = JOptionPane.showMessageDialog(null, question);
+		String answer = JOptionPane.showInputDialog(question);
 		// If the answer is correct
 		if (answer.equals(correctAnswer)) {
 
