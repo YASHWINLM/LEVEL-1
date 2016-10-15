@@ -20,6 +20,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -45,8 +46,8 @@ public class Jeopardy implements ActionListener {
 	}
 
 	private JPanel quizPanel;
-	int score = 0;
-	JLabel scoreBox = new JLabel("0");
+	// int score = 0;
+	// JLabel scoreBox = new JLabel("0");
 	int buttonCount = 0;
 
 	public static void main(String[] args) {
@@ -60,10 +61,20 @@ public class Jeopardy implements ActionListener {
 	JButton[][] buttons = new JButton[6][5];
 	String[] headers = new String[6];
 	XMLNode[] headerNodes;
+	JLabel[] labels = new JLabel[8];
+	int[] groupScores = new int[8];
+	int currentGroup = 0;
 	JFrame frame = new JFrame();
 
 	private void start() throws IOException {
-		XMLParser parser = new XMLParser(new File(System.getProperty("user.dir") + "/Jeopardy.xml"));
+		JFileChooser fileChooser = new JFileChooser();
+
+		XMLParser parser;
+		if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+			parser = new XMLParser(fileChooser.getSelectedFile());
+		} else {
+			return;
+		}
 
 		int index = 0;
 		for (XMLNode category : headerNodes = parser.parse()) {
@@ -131,7 +142,7 @@ public class Jeopardy implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		playJeopardyTheme();
 		JButton buttonPressed = (JButton) arg0.getSource();
-		//buttonPressed.setEnabled(false);
+		// buttonPressed.setEnabled(false);
 
 		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons[i].length; j++) {
@@ -139,51 +150,33 @@ public class Jeopardy implements ActionListener {
 					XMLNode h = headerNodes[i];
 					XMLNode jeopardy = h.getChildren()[j];
 					XMLNode q = jeopardy.getChildren()[0];
-					String answer = JOptionPane.showInputDialog(q.getValue());
 					XMLNode a = jeopardy.getChildren()[1];
-					if (Pattern.compile("(?i)(" + answer + ").+?").matcher(a.getValue()).find()) {
-						score += (j + 1) * 100;
-						JOptionPane.showMessageDialog(null, "YEA");
-					} else {
-						score -= (j + 1) * 100;
-						JOptionPane.showMessageDialog(null, "Frick u " + a.getValue());
-					}
+
+					askQuestion(q.getValue(), a.getValue(), j);
 				}
 			}
 		}
 
-		scoreBox.setText(score + "");
 		frame.invalidate();
 		frame.repaint();
 	}
 
-	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
-		// Remove this temporary message
-		// JOptionPane.showMessageDialog(null, "this is where the question will
-		// be asked");
-		// Use a pop up to ask the user the question
-		String answer = JOptionPane.showInputDialog(question);
-		// If the answer is correct
-		if (answer.equals(correctAnswer)) {
-
-			// Increase the score by the prizeMoney
-			score = score + prizeMoney;
-			// Call the updateScore() method
-			updateScore();
-			// Pop up a message to tell the user they were correct
-			JOptionPane.showMessageDialog(null, "Corrrrect!!");
+	private void askQuestion(String question, String answer, int y) {
+		String[] choices = { "Group 1", "Group 2", "Group 3", "Group 4", "Group 5", "Group 6", "Group 7", "Group 8" };
+		String input = (String) JOptionPane.showInputDialog(null, "Choose now...", "The Choice of a Lifetime",
+				JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+		currentGroup = Integer.parseInt(input.charAt(6) + "") - 1;
+		String response = JOptionPane.showInputDialog(question);
+		if (Pattern.compile("(?i)(" + response + ").+?").matcher(answer).find()) {
+			groupScores[currentGroup] += (y + 1) * 100;
+			JOptionPane.showMessageDialog(null, "YEA");
+		} else {
+			groupScores[currentGroup] -= (y + 1) * 100;
+			JOptionPane.showMessageDialog(null, "NYo " + answer);
 		}
-		// Otherwise
-		else {
-
-			// Decrement the score by the prizeMoney
-			score = score - prizeMoney;
-
-			// Pop up a message to tell the user the correct answer
-			JOptionPane.showMessageDialog(null, "Incorect the correct aswer was No!");
-			// Call the updateScore() method
-			updateScore();
-		}
+		labels[currentGroup].setText("Group " + (currentGroup + 1) + ": " + (groupScores[currentGroup]));
+		labels[currentGroup].invalidate();
+		labels[currentGroup].repaint();
 	}
 
 	public void playJeopardyTheme() {
@@ -205,14 +198,11 @@ public class Jeopardy implements ActionListener {
 
 	private Component makeScorePanel() {
 		JPanel panel = new JPanel();
-		panel.add(new JLabel("score:"));
-		panel.add(scoreBox);
+		for (int i = 0; i < 8; i++) {
+			panel.add(labels[i] = new JLabel("Group " + (i + 1) + ": 0"));
+		}
 		panel.setBackground(Color.CYAN);
 		return panel;
-	}
-
-	private void updateScore() {
-		scoreBox.setText("" + score);
 	}
 
 	private JPanel createHeader(String topicName, int x) {
