@@ -23,7 +23,7 @@
 
 		@Test
 		public void testConstructor() {
-			Minion stuart = new Minion("Stuart", 1, "yellow", "");
+			Minion stuart = new Minion("Stuart", 1, "yellow", "GRU");
 			assertEquals("Stuart", stuart.getName());
 			assertEquals(1, stuart.getEyes());
 			assertEquals("yellow", stuart.getColor());
@@ -46,7 +46,7 @@
 		}
 
 	}
+	
 
 
 
-}
